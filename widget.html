@@ -8,6 +8,21 @@
   <script src="https://integrations.etrusted.com/applications/widget.js/v2" async defer></script>
 </head>
 <body>
-  <etrusted-widget data-etrusted-widget-id="wdg-a04e4499-b917-4832-b40f-3816cc719d29"></etrusted-widget>
+  <!-- Widget Container -->
+  <div id="trustedWidgetContainer">
+    <etrusted-widget data-etrusted-widget-id="wdg-a04e4499-b917-4832-b40f-3816cc719d29"></etrusted-widget>
+  </div>
+
+  <!-- Manuelle Initialisierung -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const widgetContainer = document.getElementById("trustedWidgetContainer");
+      if (widgetContainer) {
+        console.log("Widget Container gefunden. Initialisiere Widget...");
+      } else {
+        console.warn("Widget Container nicht gefunden.");
+      }
+    });
+  </script>
 </body>
 </html>
