@@ -13,18 +13,25 @@
     <etrusted-widget id="etrustedWidget" data-etrusted-widget-id="wdg-a04e4499-b917-4832-b40f-3816cc719d29"></etrusted-widget>
   </div>
 
-  <!-- Manuelle Initialisierung und Widget-Render -->
+  <!-- Manuelle Initialisierung und explizites Rendering -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
       const widgetElement = document.getElementById("etrustedWidget");
       if (widgetElement) {
         console.log("Widget gefunden. Starte Render-Vorgang...");
         
-        // Initialisierung erzwingen
-        setTimeout(() => {
-          widgetElement.setAttribute("data-render", "true");
-          console.log("Widget-Render-Vorgang gestartet.");
-        }, 500);
+        // Überprüfen, ob das Skript geladen ist
+        if (window.customElements && window.customElements.get('etrusted-widget')) {
+          console.log("Widget-Komponente verfügbar. Starte Render-Vorgang...");
+          
+          // Explizite Initialisierung
+          setTimeout(() => {
+            widgetElement.setAttribute("data-render", "true");
+            console.log("Widget-Render-Vorgang gestartet.");
+          }, 500);
+        } else {
+          console.warn("Widget-Komponente nicht verfügbar.");
+        }
       } else {
         console.warn("Widget nicht gefunden.");
       }
