@@ -10,17 +10,23 @@
 <body>
   <!-- Widget Container -->
   <div id="trustedWidgetContainer">
-    <etrusted-widget data-etrusted-widget-id="wdg-a04e4499-b917-4832-b40f-3816cc719d29"></etrusted-widget>
+    <etrusted-widget id="etrustedWidget" data-etrusted-widget-id="wdg-a04e4499-b917-4832-b40f-3816cc719d29"></etrusted-widget>
   </div>
 
-  <!-- Manuelle Initialisierung -->
+  <!-- Manuelle Initialisierung und Widget-Render -->
   <script>
     document.addEventListener("DOMContentLoaded", function() {
-      const widgetContainer = document.getElementById("trustedWidgetContainer");
-      if (widgetContainer) {
-        console.log("Widget Container gefunden. Initialisiere Widget...");
+      const widgetElement = document.getElementById("etrustedWidget");
+      if (widgetElement) {
+        console.log("Widget gefunden. Starte Render-Vorgang...");
+        
+        // Initialisierung erzwingen
+        setTimeout(() => {
+          widgetElement.setAttribute("data-render", "true");
+          console.log("Widget-Render-Vorgang gestartet.");
+        }, 500);
       } else {
-        console.warn("Widget Container nicht gefunden.");
+        console.warn("Widget nicht gefunden.");
       }
     });
   </script>
